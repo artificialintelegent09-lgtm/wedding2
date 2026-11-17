@@ -108,7 +108,7 @@ export function Nav() {
         )}
 
         <div className="flex items-center gap-1 sm:gap-3">
-          {music.available && (
+          {music.available && opened && (
             <button
               type="button"
               onClick={music.toggle}

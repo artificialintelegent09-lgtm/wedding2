@@ -64,14 +64,12 @@ export function Shell({ data, children }: { data: InvitationData; children: Reac
   }, [opened]);
 
   const { start } = music;
-  const open = useCallback(
-    (withMusic = false) => {
-      window.scrollTo({ top: 0, behavior: "instant" });
-      if (withMusic) start();
-      setOpened(true);
-    },
-    [start],
-  );
+  // One button: opening the invitation is the user gesture that lets the music start.
+  const open = useCallback(() => {
+    window.scrollTo({ top: 0, behavior: "instant" });
+    start();
+    setOpened(true);
+  }, [start]);
 
   const sections = useMemo(() => getSections(data), [data]);
   const copy = getCopy(locale);

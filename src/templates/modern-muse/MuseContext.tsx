@@ -12,15 +12,13 @@ export interface MuseContextValue {
   /** "03": zero-padded position of a section in the issue. */
   no: (key: SectionKey) => string;
   music: {
-    /** False when the invitation has no music: the control is hidden. */
+    /** False when the invitation has no music, or its audio file is missing: the control is hidden. */
     available: boolean;
     playing: boolean;
     toggle: () => void;
-    /** Used by the gate's "open with music": must run inside a click handler. */
-    start: () => void;
   };
-  /** Opens the gate; `withMusic` starts the track inside the same click. */
-  open: (withMusic?: boolean) => void;
+  /** Opens the gate and starts the music inside the same click (the only moment browsers allow sound). */
+  open: () => void;
 }
 
 export const MuseContext = createContext<MuseContextValue | null>(null);

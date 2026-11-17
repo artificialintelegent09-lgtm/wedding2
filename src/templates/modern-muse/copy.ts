@@ -27,7 +27,6 @@ const en = {
     preparedFor: "Prepared for",
     guestFallback: "Our Beloved Guest",
     open: "Open Invitation",
-    openWithMusic: "Open with music",
     hint: "You are invited to the wedding of",
   },
   hero: {
@@ -52,6 +51,7 @@ const en = {
     label: "The countdown",
     title: "Until we say yes",
     save: "Save the date",
+    ended: "Thank you for celebrating with us",
   },
   events: {
     label: "The programme",
@@ -139,7 +139,6 @@ const id: MuseCopy = {
     preparedFor: "Khusus untuk",
     guestFallback: "Tamu Undangan",
     open: "Buka Undangan",
-    openWithMusic: "Buka dengan musik",
     hint: "Anda diundang ke pernikahan",
   },
   hero: {
@@ -164,6 +163,7 @@ const id: MuseCopy = {
     label: "Hitung mundur",
     title: "Menuju hari bahagia",
     save: "Simpan tanggalnya",
+    ended: "Terima kasih telah merayakan bersama kami",
   },
   events: {
     label: "Susunan acara",

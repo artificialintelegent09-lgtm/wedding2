@@ -21,8 +21,10 @@ export const modern_muse_demo: InvitationData = {
     title: "Amelia & Rafael — The Wedding Issue",
   },
   music: {
-    // A synthesised ambient loop so the control can be demonstrated. Replace with your own track.
-    src: "/audio/muse-ambient.wav",
-    title: "Ambient loop (demo)",
+    // Put the full track at public/audio/lagu-dunia-yang-nanti.mp3 (you must hold the rights to it).
+    // Until the file exists the music control stays hidden. It never autoplays: the "Open" button
+    // starts it, and the control in the header pauses/resumes it.
+    src: "/audio/lagu-dunia-yang-nanti.mp3",
+    title: "Lagu Dunia Yang Nanti",
   },
 };

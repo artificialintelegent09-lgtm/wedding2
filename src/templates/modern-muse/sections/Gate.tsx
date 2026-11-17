@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, type Variants } from "framer-motion";
-import { ArrowRight, Music2 } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { useInvitation } from "@/components/InvitationContext";
 import { Photo } from "@/components/ui/Photo";
 import { dotDate } from "../config";
@@ -25,7 +25,7 @@ const item: Variants = {
  */
 export function Gate() {
   const { data, locale, guestName } = useInvitation();
-  const { m, music, open } = useMuse();
+  const { m, open } = useMuse();
   const { bride, groom } = data.couple;
   const tz = data.events[0]?.timeZone ?? "UTC";
 
@@ -96,22 +96,12 @@ export function Gate() {
             <motion.div variants={item} className="mt-7 flex flex-col gap-3 sm:flex-row sm:items-center sm:gap-6">
               <button
                 type="button"
-                onClick={() => open(false)}
+                onClick={open}
                 className="group flex min-h-14 items-center justify-between gap-8 bg-terracotta px-6 text-[0.74rem] font-bold uppercase tracking-[0.26em] text-ivory transition-colors duration-500 hover:bg-ivory hover:text-espresso sm:min-w-64"
               >
                 {m.gate.open}
                 <ArrowRight className="h-4 w-4 transition-transform duration-500 group-hover:translate-x-1.5" strokeWidth={1.8} aria-hidden="true" />
               </button>
-              {music.available && (
-                <button
-                  type="button"
-                  onClick={() => open(true)}
-                  className="group flex min-h-11 items-center gap-2.5 text-[0.68rem] font-bold uppercase tracking-[0.24em] text-ivory/85 underline decoration-taupe/60 underline-offset-[7px] transition-colors hover:text-ivory hover:decoration-ivory"
-                >
-                  <Music2 className="h-4 w-4" strokeWidth={1.6} aria-hidden="true" />
-                  {m.gate.openWithMusic}
-                </button>
-              )}
             </motion.div>
           </div>
         </motion.div>

@@ -28,7 +28,13 @@ export function Countdown() {
   const { m, no } = useMuse();
   const now = useNowSeconds();
   const tz = data.events[0]?.timeZone ?? "UTC";
-  const remaining = now === null ? null : Math.max(0, Math.floor(new Date(data.weddingDate).getTime() / 1000) - now);
+  // The target is an absolute instant (the ISO date carries its +07:00 offset), so the count is right in
+  // any viewer timezone. `remaining` is clamped at 0: it never goes negative.
+  const target = Math.floor(new Date(data.weddingDate).getTime() / 1000);
+  const remaining = now === null ? null : Math.max(0, target - now);
+  // After the last event ends the celebration is over; between start and end it is under way.
+  const lastEnd = Math.max(target, ...data.events.map((e) => Math.floor(new Date(e.endsAt).getTime() / 1000)));
+  const finished = now !== null && now >= lastEnd;
 
   const d = remaining === null ? null : Math.floor(remaining / 86400);
   const h = remaining === null ? null : Math.floor((remaining % 86400) / 3600);
@@ -58,7 +64,7 @@ export function Countdown() {
         <Reveal y={30} className="mt-14 lg:mt-24">
           {remaining === 0 ? (
             <p role="status" className="font-display text-[clamp(2.6rem,8vw,6rem)] font-light italic">
-              {copy.events.started}
+              {finished ? m.countdown.ended : copy.events.started}
             </p>
           ) : (
             <div role="timer" aria-label={copy.events.countdownLabel} className="grid grid-cols-2 gap-x-4 gap-y-12 sm:grid-cols-4 sm:gap-x-6">
