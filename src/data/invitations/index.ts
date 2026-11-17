@@ -7,8 +7,8 @@ const all: InvitationData[] = [amelia_rafael, modern_muse_demo];
 
 const bySlug = new Map(all.map((i) => [i.slug, i]));
 
-/** Slug opened by the site root (`/`). */
-export const DEFAULT_SLUG = amelia_rafael.slug;
+/** Slug opened by the site root (`/`). Modern Muse is the default; Classic Luxury stays at /amelia-rafael/. */
+export const DEFAULT_SLUG = modern_muse_demo.slug;
 
 export function getInvitation(slug: string): InvitationData | undefined {
   return bySlug.get(slug);
